@@ -17,3 +17,5 @@ func _process(delta):
 			position.y -= speed * delta
 		if Input.is_action_pressed("right_paddle_down"):
 			position.y += speed * delta
+	
+	position.y = clamp(position.y, 168, 472)

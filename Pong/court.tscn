@@ -1,7 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://2k121seekau8"]
+[gd_scene load_steps=16 format=3 uid="uid://2k121seekau8"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dxsctu8kwrd41" path="res://bouncy.tres" id="1_5at07"]
 [ext_resource type="Script" path="res://Paddle.gd" id="2_63auo"]
+
+[sub_resource type="SystemFont" id="SystemFont_844ks"]
+font_names = PackedStringArray("Monospace")
+
+[sub_resource type="LabelSettings" id="LabelSettings_hpdtv"]
+font = SubResource("SystemFont_844ks")
+font_size = 48
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ylp4"]
 size = Vector2(896, 16)
@@ -32,89 +39,112 @@ colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_7648j"]
 gradient = SubResource("Gradient_oaldk")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xabmt"]
+size = Vector2(64, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jr8jf"]
+size = Vector2(64, 648)
+
 [node name="Court" type="Node2D"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="BackgroundAndNet" type="ColorRect" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 104.0
 offset_right = 578.0
 offset_bottom = 125.0
 
-[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect2" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 144.0
 offset_right = 578.0
 offset_bottom = 165.0
 
-[node name="ColorRect3" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect3" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 186.0
 offset_right = 578.0
 offset_bottom = 207.0
 
-[node name="ColorRect4" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect4" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 229.0
 offset_right = 578.0
 offset_bottom = 250.0
 
-[node name="ColorRect5" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect5" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 274.0
 offset_right = 578.0
 offset_bottom = 295.0
 
-[node name="ColorRect6" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect6" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 314.0
 offset_right = 578.0
 offset_bottom = 335.0
 
-[node name="ColorRect7" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect7" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 356.0
 offset_right = 578.0
 offset_bottom = 377.0
 
-[node name="ColorRect8" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect8" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 396.0
 offset_right = 578.0
 offset_bottom = 417.0
 
-[node name="ColorRect9" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect9" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 441.0
 offset_right = 578.0
 offset_bottom = 462.0
 
-[node name="ColorRect10" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect10" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 481.0
 offset_right = 578.0
 offset_bottom = 502.0
 
-[node name="ColorRect11" type="ColorRect" parent="ColorRect"]
+[node name="ColorRect11" type="ColorRect" parent="BackgroundAndNet"]
 layout_mode = 0
 offset_left = 575.0
 offset_top = 523.0
 offset_right = 578.0
 offset_bottom = 544.0
+
+[node name="LeftScoreLabel" type="Label" parent="."]
+offset_left = 128.0
+offset_top = 40.0
+offset_right = 215.0
+offset_bottom = 89.0
+text = "010"
+label_settings = SubResource("LabelSettings_hpdtv")
+
+[node name="RightScoreLabel" type="Label" parent="."]
+offset_left = 936.0
+offset_top = 40.0
+offset_right = 1023.0
+offset_bottom = 89.0
+text = "010"
+label_settings = SubResource("LabelSettings_hpdtv")
 
 [node name="TopWall" type="StaticBody2D" parent="."]
 position = Vector2(576, 96)
@@ -143,7 +173,7 @@ texture = SubResource("GradientTexture1D_fhxya")
 metadata/_edit_lock_ = true
 
 [node name="LeftPaddle" type="StaticBody2D" parent="."]
-position = Vector2(88, 320)
+position = Vector2(72, 320)
 physics_material_override = ExtResource("1_5at07")
 script = ExtResource("2_63auo")
 
@@ -158,7 +188,7 @@ texture = SubResource("GradientTexture1D_fhxya")
 metadata/_edit_lock_ = true
 
 [node name="RightPaddle" type="StaticBody2D" parent="."]
-position = Vector2(1064, 320)
+position = Vector2(1080, 320)
 physics_material_override = ExtResource("1_5at07")
 script = ExtResource("2_63auo")
 player = 1
@@ -187,3 +217,16 @@ metadata/_edit_lock_ = true
 scale = Vector2(0.0625, 16)
 texture = SubResource("GradientTexture1D_7648j")
 metadata/_edit_lock_ = true
+
+[node name="LeftEndZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftEndZone"]
+position = Vector2(32, 324)
+shape = SubResource("RectangleShape2D_xabmt")
+
+[node name="RightEndZone" type="Area2D" parent="."]
+position = Vector2(1072, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightEndZone"]
+position = Vector2(48, 324)
+shape = SubResource("RectangleShape2D_jr8jf")
