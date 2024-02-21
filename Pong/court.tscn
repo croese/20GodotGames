@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://2k121seekau8"]
+[gd_scene load_steps=18 format=3 uid="uid://2k121seekau8"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://dxsctu8kwrd41" path="res://bouncy.tres" id="1_5at07"]
+[ext_resource type="Script" path="res://court.gd" id="1_nkogr"]
 [ext_resource type="Script" path="res://Paddle.gd" id="2_63auo"]
+[ext_resource type="Script" path="res://Ball.gd" id="4_mtj33"]
 
 [sub_resource type="SystemFont" id="SystemFont_844ks"]
 font_names = PackedStringArray("Monospace")
@@ -46,6 +48,7 @@ size = Vector2(64, 648)
 size = Vector2(64, 648)
 
 [node name="Court" type="Node2D"]
+script = ExtResource("1_nkogr")
 
 [node name="BackgroundAndNet" type="ColorRect" parent="."]
 offset_right = 1152.0
@@ -173,7 +176,7 @@ texture = SubResource("GradientTexture1D_fhxya")
 metadata/_edit_lock_ = true
 
 [node name="LeftPaddle" type="StaticBody2D" parent="."]
-position = Vector2(72, 320)
+position = Vector2(80, 320)
 physics_material_override = ExtResource("1_5at07")
 script = ExtResource("2_63auo")
 
@@ -188,7 +191,7 @@ texture = SubResource("GradientTexture1D_fhxya")
 metadata/_edit_lock_ = true
 
 [node name="RightPaddle" type="StaticBody2D" parent="."]
-position = Vector2(1080, 320)
+position = Vector2(1072, 320)
 physics_material_override = ExtResource("1_5at07")
 script = ExtResource("2_63auo")
 player = 1
@@ -208,6 +211,7 @@ position = Vector2(576, 324)
 mass = 0.01
 gravity_scale = 1.66533e-16
 linear_velocity = Vector2(500, 2.08165e-12)
+script = ExtResource("4_mtj33")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource("RectangleShape2D_k1gj8")
@@ -230,3 +234,6 @@ position = Vector2(1072, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightEndZone"]
 position = Vector2(48, 324)
 shape = SubResource("RectangleShape2D_jr8jf")
+
+[connection signal="body_entered" from="LeftEndZone" to="." method="_on_left_end_zone_body_entered"]
+[connection signal="body_entered" from="RightEndZone" to="." method="_on_right_end_zone_body_entered"]
